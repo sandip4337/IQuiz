@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#DFFF5722"
+    tools:context=".Profile">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/profileimage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/ic_person"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="52dp"
+        android:padding="5dp"
+        android:fontFamily="@font/cairo_bold"
+        android:layout_gravity="center"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnlogout"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:text="Logout"
+        android:fontFamily="@font/cairo_bold"
+        android:textSize="18sp"
+        android:textColor="#FF5722"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"/>
+
+</LinearLayout>

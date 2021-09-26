@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Signup"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:textColor="#C1FF5722"
+        android:fontFamily="@font/cairo_bold"
+        android:textSize="45sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold"
+        android:layout_marginStart="15dp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:helperText="Required*"
+            android:enabled="true"
+            app:boxStrokeColor="#0C0B0B"
+            app:boxStrokeWidth="5dp"
+            app:helperTextTextColor="@color/black"
+            app:endIconMode="clear_text"
+            android:hint="@string/enter_your_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/useremail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/enter_your_password"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordsignup"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/alertpassword"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background = "#00000000"
+            android:layout_marginLeft="8dp"
+            android:text="@string/password_should_contain_click_here"
+            android:textAllCaps="false"
+            android:textSize="9sp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:layout_marginStart="8dp"
+            tools:ignore="SmallSp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_margin="8dp"
+            android:hint="@string/enter_confirm_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginLeft="32dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmpassword"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/SUBMIT1"
+            android:layout_width="370dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/cairo_bold"
+            android:backgroundTint="#FF5722"
+            android:text="@string/submit"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/alreadysignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/already_sign_up_login"
+            android:fontFamily="@font/cairo_bold"
+            android:background="#00000000"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            style="@style/Widget.MaterialComponents.Button.Icon"-->
+<!--            android:id="@+id/facebook"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:backgroundTint="#213DF3"-->
+<!--            android:hint="@string/sign_up_with_facebook"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:iconGravity="textStart" />-->
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            style="@style/Widget.MaterialComponents.Button.Icon"-->
+<!--            android:id="@+id/google"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:backgroundTint="#F44336"-->
+<!--            android:hint="@string/sign_up_with_google"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:iconGravity="textStart" />-->
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            style="@style/Widget.MaterialComponents.Button.Icon"-->
+<!--            android:id="@+id/linkedIn"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:backgroundTint="#2196F3"-->
+<!--            android:hint="@string/sign_up_with_linkedin"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:iconGravity="textStart" />-->
+
+    </LinearLayout>
+</LinearLayout>

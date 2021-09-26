@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Login"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/hey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hey,"
+        android:fontFamily="@font/cairo_bold"
+        android:textSize="45sp"
+        android:layout_marginTop="150sp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome To IQuiz"
+        android:fontFamily="@font/cairo_bold"
+        android:textSize="35sp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/enter_your_email"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/useremaillogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Enter Your Password"
+            app:helperTextTextColor="@color/black"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:inputType="textPassword"
+                android:maxLength="15" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/SUBMITlogin"
+            android:layout_width="382dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="@font/cairo_bold"
+            android:text="submit"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/alreadysignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/cairo_bold"
+            android:background="#00000000"
+            android:gravity="center_horizontal"
+            android:text="Do not have any account ? Sign Up"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        style="@style/Widget.MaterialComponents.Button.Icon"-->
+<!--        android:id="@+id/facebook"-->
+<!--        android:layout_width="320dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:backgroundTint="#2453E1"-->
+<!--        android:hint="Continue with facebook"-->
+<!--        android:textColorHint="@color/white"-->
+<!--        app:iconGravity="textStart" />-->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        style="@style/Widget.MaterialComponents.Button.Icon"-->
+<!--        android:id="@+id/google"-->
+<!--        android:layout_width="320dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:backgroundTint="#F44336"-->
+<!--        android:hint="Continue With Google"-->
+<!--        android:textColorHint="@color/white"-->
+<!--        app:iconGravity="textStart" />-->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        style="@style/Widget.MaterialComponents.Button.Icon"-->
+<!--        android:id="@+id/linkedIn"-->
+<!--        android:layout_width="320dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:backgroundTint="#1671BA"-->
+<!--        android:hint="Continue With LinkedIn"-->
+<!--        android:textColorHint="@color/white"-->
+<!--        app:iconGravity="textStart" />-->
+</LinearLayout>
+

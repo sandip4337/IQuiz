@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sandip.quiz">
+
+    <application
+        android:name="androidx.multidex.MultiDexApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.QUIZ">
+        <activity android:name=".Activity.noquestion"></activity>
+        <activity android:name=".Activity.Answer" />
+        <activity android:name=".Activity.ScoreActivity" />
+        <activity android:name=".Activity.QuestionActivity" />
+        <activity android:name=".Activity.Splashscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.Login" />
+        <activity android:name=".Activity.Signup" />
+        <activity android:name=".Activity.MainActivity" />
+    </application>
+
+</manifest>

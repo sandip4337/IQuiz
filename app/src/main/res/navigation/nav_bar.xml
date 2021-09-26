@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bar"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.sandip.quiz.Home"
+        android:label="IQuiz"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.sandip.quiz.Profile"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/about_us"
+        android:name="com.sandip.quiz.about_us"
+        android:label="About Us"
+        tools:layout="@layout/fragment_about_us" />
+<!--    <fragment-->
+<!--        android:id="@+id/menu"-->
+<!--        android:name="com.sandip.quiz.Menu"-->
+<!--        android:label="Menu"-->
+<!--        tools:layout="@layout/fragment_menu" />-->
+</navigation>

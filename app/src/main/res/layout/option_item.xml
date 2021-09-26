@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/option_container"
+    android:layout_margin="15dp"
+    android:layout_marginTop="8dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/quiz_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:text="A.   Sandip"
+        android:textColor="#9E101010"
+        android:fontFamily="@font/cairo_bold"
+        android:textSize="18sp" />
+
+</LinearLayout>
