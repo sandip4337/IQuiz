@@ -49,6 +49,7 @@ class Profile : Fragment() {
     lateinit var profileimge: ImageView
     lateinit var email : TextView
     lateinit var logout: Button
+    lateinit var login: Button
 
     var auth = FirebaseAuth.getInstance()
 
@@ -63,20 +64,37 @@ class Profile : Fragment() {
         email = view.findViewById(R.id.email)
 
         logout = view.findViewById(R.id.btnlogout)
+        login = view.findViewById(R.id.btnlogin)
 
-        email.text = auth.currentUser?.email
+        val user = auth.currentUser
 
-        Logout()
+        if (user != null) {
+            email.text = auth.currentUser?.email
+            email.visibility = View.VISIBLE
+            logout.visibility = View.VISIBLE
+        }
+        else{
+            login.visibility = View.VISIBLE
+        }
+
+        logout()
+
+        login()
 
         return view
+
     }
 
-    private fun Logout(){
+
+
+    private fun logout(){
 
         logout.setOnClickListener {
+
             if (ConnectionManager().cheakConnectivity(activity as Context)){
+
                 FirebaseAuth.getInstance().signOut()
-                val intent = Intent(activity,Login::class.java)
+                val intent = Intent(activity,Home::class.java)
                 startActivity(intent)
                 activity?.finish()
             }
@@ -95,6 +113,32 @@ class Profile : Fragment() {
                 dialog.create()
                 dialog.show()
         }
+        }
+
+    }
+    private fun login(){
+
+        login.setOnClickListener {
+
+            if (ConnectionManager().cheakConnectivity(activity as Context)){
+                val intent = Intent(activity,Login::class.java)
+                startActivity(intent)
+            }
+            else{
+                val dialog = AlertDialog.Builder(activity as Context)
+                dialog.setTitle("Error")
+                dialog.setMessage("Internet Connection not Found")
+                dialog.setPositiveButton("Open Settings") { text, listener ->
+                    val settingsIntent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
+                    startActivity(settingsIntent)
+                    activity?.finish()
+                }
+                dialog.setNegativeButton("Exit"){text,listener ->
+                    ActivityCompat.finishAffinity(activity as Activity)
+                }
+                dialog.create()
+                dialog.show()
+            }
         }
 
     }

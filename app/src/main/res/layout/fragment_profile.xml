@@ -17,9 +17,11 @@
         android:scaleType="fitCenter"
         android:layout_marginTop="150dp"
         android:src="@drawable/ic_person"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:contentDescription="@string/todo" />
 
     <TextView
+        android:visibility="invisible"
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,9 +33,23 @@
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <Button
+        android:visibility="invisible"
+        android:id="@+id/btnlogin"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:text="Login"
+        android:fontFamily="@font/cairo_bold"
+        android:textSize="18sp"
+        android:textColor="#FF5722"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"/>
+
+    <Button
+        android:visibility="invisible"
         android:id="@+id/btnlogout"
         android:layout_width="320dp"
         android:layout_height="60dp"

@@ -51,7 +51,6 @@ class Signup : AppCompatActivity() {
         already2.setOnClickListener {
             val intent = Intent(this@Signup, Login::class.java)
             startActivity(intent)
-            finish()
         }
 
         alertbutton.setOnClickListener {

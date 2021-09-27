@@ -26,6 +26,7 @@ class Login : AppCompatActivity() {
     lateinit var userpasswordlogin: EditText
     lateinit var submit: Button
     lateinit var already: Button
+    lateinit var skip: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +40,11 @@ class Login : AppCompatActivity() {
             useremaillogin = findViewById(R.id.useremaillogin)
             userpasswordlogin = findViewById(R.id.loginpassword)
             already = findViewById(R.id.alreadysignup)
+            skip = findViewById(R.id.skip)
 
             already.setOnClickListener {
                 val intent = Intent(this@Login, Signup::class.java)
                 startActivity(intent)
-                finish()
             }
 
             auth = Firebase.auth
@@ -53,6 +54,13 @@ class Login : AppCompatActivity() {
             submit.setOnClickListener {
                 login()
             }
+
+            skip.setOnClickListener {
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
         }else{
             val dialog = AlertDialog.Builder(this)
             dialog.setTitle("Error")
@@ -112,8 +120,6 @@ class Login : AppCompatActivity() {
             }
         }
     }
-    override fun onBackPressed() {
-        finish()
-    }
+
 
 }
