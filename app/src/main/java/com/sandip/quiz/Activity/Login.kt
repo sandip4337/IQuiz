@@ -1,15 +1,21 @@
 package com.sandip.quiz.Activity
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.sandip.quiz.R
+import com.sandip.quiz.utils.ConnectionManager
 
 
 class Login : AppCompatActivity() {
@@ -23,37 +29,58 @@ class Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
-        supportActionBar?.hide()
+        if (ConnectionManager().cheakConnectivity(this)){
 
-        useremaillogin = findViewById(R.id.useremaillogin)
-        userpasswordlogin = findViewById(R.id.loginpassword)
-        already = findViewById(R.id.alreadysignup)
+            setContentView(R.layout.activity_login)
 
-        already.setOnClickListener {
-            val intent = Intent(this@Login, Signup::class.java)
-            startActivity(intent)
-            finish()
-        }
+            supportActionBar?.hide()
 
-        auth = Firebase.auth
+            useremaillogin = findViewById(R.id.useremaillogin)
+            userpasswordlogin = findViewById(R.id.loginpassword)
+            already = findViewById(R.id.alreadysignup)
 
-        submit = findViewById(R.id.SUBMITlogin)
+            already.setOnClickListener {
+                val intent = Intent(this@Login, Signup::class.java)
+                startActivity(intent)
+                finish()
+            }
 
-        submit.setOnClickListener {
-            login()
+            auth = Firebase.auth
+
+            submit = findViewById(R.id.SUBMITlogin)
+
+            submit.setOnClickListener {
+                login()
+            }
+        }else{
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Error")
+            dialog.setMessage("Internet Connection not Found")
+            dialog.setPositiveButton("Open Settings") { text, listener ->
+                val settingsIntent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
+                startActivity(settingsIntent)
+                finish()
+            }
+            dialog.setNegativeButton("Exit"){text,listener ->
+                ActivityCompat.finishAffinity(this)
+            }
+            dialog.create()
+            dialog.show()
         }
     }
 
     private fun login(){
 
-        val email:String = useremaillogin.text.toString()
+        var email:String = useremaillogin.text.toString()
         val password:String = userpasswordlogin.text.toString()
+
+        email = email.replace("\\s".toRegex(), "")
+
 
         if (email.isBlank() || password.isBlank())
         {
-            Toast.makeText(this, "please check email and password", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "please check email and password again", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -85,4 +112,8 @@ class Login : AppCompatActivity() {
             }
         }
     }
+    override fun onBackPressed() {
+        finish()
+    }
+
 }

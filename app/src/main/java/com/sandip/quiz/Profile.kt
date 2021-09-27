@@ -1,7 +1,11 @@
 package com.sandip.quiz
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +14,14 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sandip.quiz.Activity.Login
+import com.sandip.quiz.Activity.MainActivity
 import com.sandip.quiz.R
+import com.sandip.quiz.utils.ConnectionManager
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,8 +52,6 @@ class Profile : Fragment() {
 
     var auth = FirebaseAuth.getInstance()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,8 +64,6 @@ class Profile : Fragment() {
 
         logout = view.findViewById(R.id.btnlogout)
 
-
-
         email.text = auth.currentUser?.email
 
         Logout()
@@ -68,10 +72,31 @@ class Profile : Fragment() {
     }
 
     private fun Logout(){
+
         logout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            activity?.finish()
+            if (ConnectionManager().cheakConnectivity(activity as Context)){
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(activity,Login::class.java)
+                startActivity(intent)
+                activity?.finish()
+            }
+            else{
+                val dialog = AlertDialog.Builder(activity as Context)
+                dialog.setTitle("Error")
+                dialog.setMessage("Internet Connection not Found")
+                dialog.setPositiveButton("Open Settings") { text, listener ->
+                    val settingsIntent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
+                    startActivity(settingsIntent)
+                    activity?.finish()
+                }
+                dialog.setNegativeButton("Exit"){text,listener ->
+                    ActivityCompat.finishAffinity(activity as Activity)
+                }
+                dialog.create()
+                dialog.show()
         }
+        }
+
     }
 
 
@@ -95,4 +120,5 @@ class Profile : Fragment() {
                 }
             }
     }
+
 }

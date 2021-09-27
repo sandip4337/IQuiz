@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
+import com.sandip.quiz.Home
 import com.sandip.quiz.R
 import com.sandip.quiz.model.ques_element
 import com.sandip.quiz.model.quiz
@@ -114,9 +115,9 @@ class Answer : AppCompatActivity() {
         }
         ok.setOnClickListener {
 
-            val intent = Intent(this@Answer , MainActivity::class.java)
+            val intent = Intent(this@Answer , Home::class.java)
             startActivity(intent)
-
+            finish()
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.sandip.quiz.Activity
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
+import com.sandip.quiz.Home
 import com.sandip.quiz.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,14 +43,15 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.home,
             R.id.profile,
-            R.id.about_us,
-            R.id.menu
+            R.id.about_us
+//            R.id.menu
         ))
         setupActionBarWithNavController(navController,appBarConfiguration)
 
         // merge navigation view and navigation controller
         bottomNavigationItemView.setupWithNavController(navController)
     }
+
 
     //    datepicker function in activity
     @SuppressLint("SimpleDateFormat")
@@ -88,6 +91,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-}
+    }
 }

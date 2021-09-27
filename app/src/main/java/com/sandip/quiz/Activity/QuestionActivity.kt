@@ -1,16 +1,19 @@
 package com.sandip.quiz.Activity
 
+import android.app.AlertDialog
 import android.content.ClipDescription
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.Task
@@ -23,6 +26,7 @@ import com.sandip.quiz.R
 import com.sandip.quiz.adapters.optionadapter
 import com.sandip.quiz.model.ques_element
 import com.sandip.quiz.model.quiz
+import com.sandip.quiz.utils.ConnectionManager
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -49,21 +53,37 @@ class QuestionActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_SECURE
         )
 
-        setContentView(R.layout.activity_question)
+        if (ConnectionManager().cheakConnectivity(this)){
+            setContentView(R.layout.activity_question)
 
-        previous = findViewById(R.id.previous)
-        Next = findViewById(R.id.Next)
-        submit = findViewById(R.id.submit)
-
-
-        Description = findViewById(R.id.description)
-        recyclerqestion = findViewById(R.id.optionlist)
-
-        setUpFirestore()
-
-        setUpEventListener()
+            previous = findViewById(R.id.previous)
+            Next = findViewById(R.id.Next)
+            submit = findViewById(R.id.submit)
 
 
+            Description = findViewById(R.id.description)
+            recyclerqestion = findViewById(R.id.optionlist)
+
+            setUpFirestore()
+
+            setUpEventListener()
+        }else{
+
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Error")
+            dialog.setMessage("Internet Connection not Found")
+            dialog.setPositiveButton("Open Settings") { text, listener ->
+                val settingsIntent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
+                startActivity(settingsIntent)
+                finish()
+            }
+            dialog.setNegativeButton("Exit"){text,listener ->
+                ActivityCompat.finishAffinity(this)
+            }
+            dialog.create()
+            dialog.show()
+
+        }
     }
 
     private fun bindviews(){
@@ -99,7 +119,6 @@ class QuestionActivity : AppCompatActivity() {
             recyclerqestion.adapter = optionAdapter
             recyclerqestion.layoutManager = layoutManager
             recyclerqestion.setHasFixedSize(true)
-
         }
     }
 
@@ -122,6 +141,7 @@ class QuestionActivity : AppCompatActivity() {
             intent.putExtra("QUIZ",json)
             intent.putExtra("DATE",date)
             startActivity(intent)
+            finish()
         }
     }
 

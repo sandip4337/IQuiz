@@ -1,10 +1,13 @@
 package com.sandip.quiz
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,7 +17,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,6 +32,7 @@ import com.sandip.quiz.R
 import com.sandip.quiz.adapters.homeadapter
 import com.sandip.quiz.model.quiz
 import com.sandip.quiz.utils.Colorpicker
+import com.sandip.quiz.utils.ConnectionManager
 import com.sandip.quiz.utils.IconPicker
 import java.text.SimpleDateFormat
 import java.util.*
@@ -73,6 +79,12 @@ class Home : Fragment() {
 
         recyclerHome = view.findViewById(R.id.recyclerviewhome)
         layoutManager = GridLayoutManager(activity,2)
+        Homeadaptar = homeadapter(activity as Context, quizlist)
+        recyclerHome.adapter = Homeadaptar
+
+        recyclerHome.layoutManager = layoutManager
+
+        if (ConnectionManager().cheakConnectivity(activity as Context)){
 
         firestore = FirebaseFirestore.getInstance()
         val collectionReference:CollectionReference = firestore.collection("Quizzes")
@@ -86,12 +98,21 @@ class Home : Fragment() {
                 Homeadaptar.notifyDataSetChanged()
             }
         }
-
-        Homeadaptar = homeadapter(activity as Context, quizlist)
-        recyclerHome.adapter = Homeadaptar
-
-        recyclerHome.layoutManager = layoutManager
-
+        }else{
+            val dialog = AlertDialog.Builder(activity as Context)
+            dialog.setTitle("Error")
+            dialog.setMessage("Internet Connection not Found")
+            dialog.setPositiveButton("Open Settings") { text, listener ->
+                val settingsIntent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
+                startActivity(settingsIntent)
+                activity?.finish()
+            }
+            dialog.setNegativeButton("Exit"){text,listener ->
+                ActivityCompat.finishAffinity(activity as Activity)
+            }
+            dialog.create()
+            dialog.show()
+        }
         return view
     }
 
@@ -114,6 +135,7 @@ class Home : Fragment() {
                 }
             }
     }
+
 }
 
 

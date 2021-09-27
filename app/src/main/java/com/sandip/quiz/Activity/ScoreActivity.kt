@@ -39,6 +39,7 @@ class ScoreActivity : AppCompatActivity() {
             intent.putExtra("DATE",date)
             Log.d("DATE",date!!)
             startActivity(intent)
+            finish()
         }
     }
 

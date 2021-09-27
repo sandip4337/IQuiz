@@ -72,9 +72,11 @@ class Signup : AppCompatActivity() {
 
     private fun register(){
 
-        val email:String = useremail.text.toString()
+        var email:String = useremail.text.toString()
         val password:String = userpassword.text.toString()
         val confirmpassword:String = confirmuserpassword.text.toString()
+
+        email = email.replace("\\s".toRegex(), "")
 
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches() && isValidPasswordFormat(password) && password == confirmpassword)
             auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
@@ -115,7 +117,7 @@ class Signup : AppCompatActivity() {
                 "(?=.*[@#$%^&+=])" +    //at least 1 special character
                 "(?=\\S+$)" +           //no white spaces
                 ".{8,}" +               //at least 8 characters
-                "$");
+                "$")
         return passwordREGEX.matcher(password).matches()
     }
 }
