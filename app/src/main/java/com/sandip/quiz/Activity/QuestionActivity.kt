@@ -112,7 +112,6 @@ class QuestionActivity : AppCompatActivity() {
         Log.d("ques", ques.toString())
 
         ques?.let {
-
             Description.text = it.description
             optionAdapter = optionadapter(this, it)
             layoutManager = LinearLayoutManager(this)
