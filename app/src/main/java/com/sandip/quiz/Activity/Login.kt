@@ -98,7 +98,7 @@ class Login : AppCompatActivity() {
                 checkIfEmailVerified()
 
             }else{
-                Toast.makeText(this, "please check email and password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Invalid Email or password", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -120,6 +120,4 @@ class Login : AppCompatActivity() {
             }
         }
     }
-
-
 }
