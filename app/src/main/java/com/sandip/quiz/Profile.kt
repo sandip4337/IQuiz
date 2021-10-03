@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,13 +13,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.sandip.quiz.Activity.Login
-import com.sandip.quiz.Activity.MainActivity
-import com.sandip.quiz.R
 import com.sandip.quiz.utils.ConnectionManager
 
 // TODO: Rename parameter arguments, choose names that match
@@ -87,6 +83,7 @@ class Profile : Fragment() {
 
 
 
+
     private fun logout(){
 
         logout.setOnClickListener {
@@ -94,9 +91,11 @@ class Profile : Fragment() {
             if (ConnectionManager().cheakConnectivity(activity as Context)){
 
                 FirebaseAuth.getInstance().signOut()
-                val intent = Intent(activity,Home::class.java)
-                startActivity(intent)
-                activity?.finish()
+                email.visibility = View.GONE
+                logout.visibility = View.GONE
+                Toast.makeText(activity, "Logout Successfully ", Toast.LENGTH_SHORT).show()
+                login.visibility = View.VISIBLE
+
             }
             else{
                 val dialog = AlertDialog.Builder(activity as Context)
@@ -107,7 +106,7 @@ class Profile : Fragment() {
                     startActivity(settingsIntent)
                     activity?.finish()
                 }
-                dialog.setNegativeButton("Exit"){text,listener ->
+                dialog.setNegativeButton("Exit"){ text, listener ->
                     ActivityCompat.finishAffinity(activity as Activity)
                 }
                 dialog.create()
@@ -121,7 +120,7 @@ class Profile : Fragment() {
         login.setOnClickListener {
 
             if (ConnectionManager().cheakConnectivity(activity as Context)){
-                val intent = Intent(activity,Login::class.java)
+                val intent = Intent(activity, Login::class.java)
                 startActivity(intent)
             }
             else{
@@ -133,7 +132,7 @@ class Profile : Fragment() {
                     startActivity(settingsIntent)
                     activity?.finish()
                 }
-                dialog.setNegativeButton("Exit"){text,listener ->
+                dialog.setNegativeButton("Exit"){ text, listener ->
                     ActivityCompat.finishAffinity(activity as Activity)
                 }
                 dialog.create()

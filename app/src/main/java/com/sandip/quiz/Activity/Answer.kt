@@ -75,7 +75,7 @@ class Answer : AppCompatActivity() {
 
         ques?.let {
             question.text = it.description
-            answer.text = "Answer: "+it.answer
+            answer.text = "Answer: " + it.answer
         }
     }
 

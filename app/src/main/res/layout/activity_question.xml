@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:layout_margin="10dp"
     tools:context=".Activity.QuestionActivity">
 
     <TextView
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:textSize="15sp"
-        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textColor="#E4000000"
         android:fontFamily="@font/cairo_bold"
         android:layout_marginTop="25dp"
-        android:text="@string/textview_description"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -86,6 +86,10 @@ class QuestionActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+
+    }
+
     private fun bindviews(){
 
         previous.visibility = View.GONE
@@ -99,13 +103,13 @@ class QuestionActivity : AppCompatActivity() {
             questions!!.size -> {
                 previous.visibility = View.VISIBLE
                 submit.visibility = View.VISIBLE
+
             }
             else -> {
                 previous.visibility = View.VISIBLE
                 Next.visibility = View.VISIBLE
             }
         }
-        Log.d("questions", questions.toString())
 
         val ques = questions?.get("Question$index")
 
@@ -127,6 +131,7 @@ class QuestionActivity : AppCompatActivity() {
             index--
             bindviews()
         }
+
         Next.setOnClickListener {
             index++
             bindviews()
@@ -141,7 +146,11 @@ class QuestionActivity : AppCompatActivity() {
             intent.putExtra("DATE",date)
             startActivity(intent)
             finish()
+
+
+
         }
+
     }
 
     private fun setUpFirestore() {

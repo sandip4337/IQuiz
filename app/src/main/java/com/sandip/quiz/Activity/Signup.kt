@@ -88,10 +88,8 @@ class Signup : AppCompatActivity() {
         else {
             Toast.makeText(this,"please cheak the details again",Toast.LENGTH_SHORT).show()
         }
-
-
-
     }
+
     private fun cheakmail(){
         val  firebaseUser =  auth.currentUser
         firebaseUser?.sendEmailVerification()?.addOnCompleteListener(this){

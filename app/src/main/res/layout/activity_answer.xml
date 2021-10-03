@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/cairo_bold"
             android:padding="8dp"
-            android:text="What is your name?"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -31,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:padding="8dp"
-            android:text="Answer : Sandip"
             android:textSize="18sp" />
     </LinearLayout>
 
